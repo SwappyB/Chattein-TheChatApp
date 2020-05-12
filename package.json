@@ -1,0 +1,29 @@
+{
+  "name": "chattein",
+  "version": "1.0.0",
+  "description": "Chatteing Direct, the chat app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Brad Traversy",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.13",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "engines": {
+    "node": "12.16.x",
+    "npm": "6.14.x"
+  }
+}

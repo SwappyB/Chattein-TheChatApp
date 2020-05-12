@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --dark-color-a: #667aff;
+  --dark-color-b: #7386ff;
+  --light-color: #e6e9ff;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background: #424242;
+  margin: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 5px 15px;
+  background: var(--light-color);
+  color: var(--dark-color-a);
+  border: 0;
+  font-size: 17px;
+}
+
+/* Login Page */
+
+.join-container {
+  max-width: 500px;
+  margin: 2vw auto;
+  color: #fff;
+}
+
+.join-header {
+  text-align: center;
+  padding: 20px;
+  background: #0063d4;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.join-main {
+  padding: 30px 40px;
+  background: #2c7ee8;
+}
+
+.join-main p {
+  margin-bottom: 20px;
+}
+
+.join-main .form-control {
+  margin-bottom: 20px;
+}
+
+.join-main label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.join-main input {
+  font-size: 16px;
+  padding: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.join-main .btn {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
+  color: black;
+  display: block;
+  padding: 0.7vw 0 0.7vw 0;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+.join-main .btn:hover {
+  background-color: #0063d4;
+  color: white;
+}
+
+.register-now {
+  margin-top: 20px;
+}
+
+.register-now .btn {
+  font-size: 16px;
+  color: black;
+  display: block;
+  width: 100%;
+  padding: 0.7vw 0 0.7vw 0;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.register-now .btn:hover {
+  background-color: #0063d4;
+  color: white;
+}
+
+/* alert-box */
+
+.alert-failure {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+.alert-success {
+  padding: 20px;
+  background-color: #4caf50; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+.alert-info {
+  padding: 20px;
+  background-color: #2196f3; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+.alert-btn-close {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.alert-btn-close:hover {
+  color: black;
+}
+
+.alert-btn {
+  color: white;
+  float: right;
+  font-size: 18px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  -webkit-animation-name: blackWhite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s;
+}
+
+@-webkit-keyframes blackWhite {
+  0% {
+    color: white;
+  }
+  50% {
+    color: white;
+  }
+  51% {
+    color: black;
+  }
+  100% {
+    color: black;
+  }
+}
+
+.alert-btn:hover {
+  color: black;
+}

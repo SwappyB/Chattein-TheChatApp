@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/inbox.css" />
+    <link rel="icon" href="images/icon2.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Chattein | Inbox</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div id="cover-spin"></div>
+      <div class="box-container">
+        <div class="split left">
+          <div class="header center-text">
+            <h2>Chattein</h2>
+          </div>
+          <div class="mid-box">
+            <div>
+              <div class="sidebar-title center-text">
+                <h4>Conversations</h4>
+              </div>
+              <div id="conversations"></div>
+            </div>
+            <div id="users">
+              <div class="sidebar-title center-text">
+                <h4>Users</h4>
+              </div>
+            </div>
+          </div>
+          <div class="logout">
+            <a href="/logout" id="logoutlink">
+              <div class="inlog">
+                Log out
+              </div></a
+            >
+          </div>
+        </div>
+        <div class="split right">
+          <div id="message-container">
+            <div class="welcome-message">
+              <div class="centered">
+                <h3 class="welcome-text welcome-header">
+                  Welcome,
+                  <span id="curr-username-welcome"></span>
+                </h3>
+                <i class="fa fa-comments logo"></i>
+                <h3 class="welcome-header">
+                  Start chatting with your friends
+                </h3>
+              </div>
+            </div>
+            <div class="message-box" style="display: none;">
+              <div class="message-box-info">
+                <span id="user-name">dark</span>
+              </div>
+              <div id="messages"></div>
+              <div class="message-footer">
+                <div>
+                  <textarea
+                    class="message-input"
+                    id="message-field"
+                    cols="30"
+                    rows="1"
+                    placeholder="Message..."
+                  ></textarea>
+                  <i
+                    class="fa fa-paper-plane"
+                    id="submit-message-icon"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/inbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  </body>
+</html>

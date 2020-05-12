@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/icon2.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Chattein - Inspired by Zakir Khan</title>
+  </head>
+  <body>
+    <div class="join-container">
+      <div id="alert-div"></div>
+      <header class="join-header">
+        <h1>Log in - Chattein</h1>
+      </header>
+      <main class="join-main">
+        <form id="loginForm">
+          <div class="form-control">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username..."
+            />
+          </div>
+          <div class="form-control">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter password..."
+            />
+          </div>
+          <button type="submit" id="formLoginBtn" class="btn">
+            Open Inbox
+          </button>
+        </form>
+        <br />
+        <hr />
+        <div class="register-now">
+          <a class="btn" href="/register">
+            Create New Account
+          </a>
+        </div>
+      </main>
+    </div>
+    <script src="./js/login.js"></script>
+  </body>
+</html>
