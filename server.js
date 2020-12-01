@@ -1,12 +1,13 @@
-const path = require('path'),
-  http = require('http'),
-  bodyParser = require('body-parser'),
-  express = require('express'),
-  allRoutes = require('./routes/index'),
-  mongoose = require('mongoose'),
-  compression = require('compression'),
-  session = require('express-session');
+const path = require("path"),
+  http = require("http"),
+  bodyParser = require("body-parser"),
+  express = require("express"),
+  allRoutes = require("./routes/index"),
+  mongoose = require("mongoose"),
+  compression = require("compression"),
+  session = require("express-session");
 
+require("dotenv").config();
 const {
   getSideBar,
   startNewConversation,
@@ -15,40 +16,40 @@ const {
   getOnline,
   addOnline,
   removeOnline,
-} = require('./utils/chats');
+} = require("./utils/chats");
 
 const app = express();
 const server = http.createServer(app);
-const io = require('socket.io')({
+const io = require("socket.io")({
   pingTimeout: 20000,
   pingInterval: 10000,
 }).listen(server);
 
 let userSession = session({
   secret:
-    process.env.SESSION_SECRET || 'temporarySecretcannot$55bedecoded@&9669^8',
+    process.env.SESSION_SECRET || "temporarySecretcannot$55bedecoded@&9669^8",
   resave: true,
   saveUninitialized: true,
   authenticated: false,
 });
 app.use(userSession);
 
-app.use(bodyParser.json({ limit: '0.2mb' })); // application/json
+app.use(bodyParser.json({ limit: "0.2mb" })); // application/json
 
 // Set static folder
 app.use(compression());
 
-app.all('*', allRoutes);
-app.use(express.static(path.join(__dirname, 'public')));
+app.all("*", allRoutes);
+app.use(express.static(path.join(__dirname, "public")));
 
-io.set('transports', ['websocket']);
+io.set("transports", ["websocket"]);
 
 io.use((socket, next) => {
   userSession(socket.request, socket.request.res || {}, next);
 });
 
 // Run when client connects
-io.sockets.on('connection', async (socket) => {
+io.sockets.on("connection", async (socket) => {
   if (!socket.request.session.authenticated) {
     socket.disconnect();
   }
@@ -63,36 +64,36 @@ io.sockets.on('connection', async (socket) => {
   });
 
   // Send conversation history and users
-  socket.emit('sidebarInfo', { viewer: socket.request.session.user, ...data });
-  io.emit('status', getOnline());
+  socket.emit("sidebarInfo", { viewer: socket.request.session.user, ...data });
+  io.emit("status", getOnline());
 
   // Start a new conversation, id will be constant for both sides.
-  socket.on('newConv', async (data) => {
+  socket.on("newConv", async (data) => {
     const res = await startNewConversation({
       userId: socket.request.session.user.id,
       data,
     });
     socket.join(res.cid);
-    socket.emit('newConRes', res);
+    socket.emit("newConRes", res);
   });
 
   // Will not send message to the user if he is not in the room. Can use redis to store user socket sessions and room info.
-  socket.on('newMessage', async (data) => {
+  socket.on("newMessage", async (data) => {
     await addMessage({ userId: socket.request.session.user.id, ...data });
     socket
       .to(data.cid)
-      .emit('message', { userFrom: socket.request.session.user.id, ...data });
+      .emit("message", { userFrom: socket.request.session.user.id, ...data });
   });
 
   // access chat message. Can be done by simple xhr request as well.
-  socket.on('chatsFor', async (cid) => {
+  socket.on("chatsFor", async (cid) => {
     const data = await getMessages(cid);
-    socket.emit('chats', data);
+    socket.emit("chats", data);
   });
 
-  socket.on('disconnect', () => {
+  socket.on("disconnect", () => {
     removeOnline(socket.request.session.user.id);
-    socket.broadcast.emit('status', getOnline());
+    socket.broadcast.emit("status", getOnline());
   });
 });
 
@@ -108,5 +109,5 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
-  .then(() => console.log('MongoDB connected...'))
+  .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
