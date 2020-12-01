@@ -46,13 +46,13 @@ body {
 
 .logo {
   font-size: 70px !important;
-  padding-left: 10vw;
   padding-bottom: 2vw;
   color: #0063d4;
 }
 
 .centered {
   position: absolute;
+  text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -152,7 +152,7 @@ body {
   padding: 30% 0 0 30%;
 }
 .welcome-text {
-  padding-left: 6vw;
+  /* padding-left: 6vw; */
   padding-bottom: 2vw;
 }
 
